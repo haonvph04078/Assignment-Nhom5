@@ -3,10 +3,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>F5 Shop Group | Trang Chủ</title>  
+    <title>F5 Shop Group | Quản lý Hóa Đơn</title>  
     <link href="css/slicebox.css" rel="stylesheet" type="text/css" />   
     <link href="css/animate.min.css" rel="stylesheet" type="text/css" />
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -22,18 +22,9 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
     <style type="text/css">
-        .auto-style1 {
-            font-size: 16px;
-            font-family:Cambria;
-           
-        }
-        .auto-style2 {
-            width: 100%;
-        }
-       
         td,input {
             font-family:Cambria;
-            font-size:14px;
+            font-size:12px;
             text-align:center;
             padding:5px;
             margin:5px;
@@ -52,7 +43,7 @@
                     </span>
                 </button>
                 <a href="Default.aspx" class="navbar-brand">
-                    <asp:Image runat="server" ImageUrl="images/logof5.png" with="70px" height="70px"/>
+                    <asp:Image ID="Image1" runat="server" ImageUrl="images/logof5.png" with="70px" height="70px"/>
                 </a>
             </div>
             <div id="myNav" class="collapse navbar-collapse">
@@ -63,7 +54,7 @@
                         <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="sanpham.aspx">Sản Phẩm</a></li>
-                            <li><a href="khach_hang2.aspx">Khách Hàng</a></li>
+                            <li><a href="khach_hang.aspx">Khách Hàng</a></li>
                             <li><a href="hoa_don.aspx">Hóa Đơn</a></li>
                             <li><a href="loai_sp.aspx">Loại Sản Phẩm</a></li>
                             <li><a href="hoa_don_chi_tiet.aspx">Hóa Đơn Chi tiết</a></li>
@@ -71,8 +62,8 @@
                             
                         </ul>
                     </li>
-                    <li><a href="gioi_thieu.aspx">Về Chúng Tôi</a></li>
-                    
+                    <li><a href="gioi_thieu.aspx">Giới thiệu</a></li>
+                    <li><a href="lien_he.aspx">Liên Hệ</a></li>
                 </ul>
             </div>
         </div>
@@ -211,34 +202,201 @@
       </div>
      </section>
     <div class="container">
-        
-        <asp:DataList ID="DataList1" runat="server" RepeatColumns="3" DataSourceID="SqlDataSource2" DataKeyField="ma">
-
-            <ItemTemplate>
-                <asp:Image ID="Image1" runat="server" Height="365px" ImageUrl='<%# Bind("anh") %>' Width="365px" />
-                <br />
-               
-                
-                
-                <asp:Label ID="ten_san_phamLabel" runat="server" Text='<%# Eval("ten_san_pham") %>' />
-                
-                <br />
-                Giá:
-                <asp:Label ID="giaLabel" runat="server" Text='<%# Eval("gia") %>' />
-                <br />
-                Mô tả:
-                <asp:Label ID="mo_taLabel" runat="server" Text='<%# Eval("mo_ta") %>' />
-              
-                <br />
-                
-                <asp:Button ID="Button1" runat="server" Text="Detail" Width="82px" CommandName="Detail" />
-                <asp:Button ID="Button2" runat="server" Text="Add To Cart" Width="82px" CommandName="Add"/>
-                <br />
-            </ItemTemplate>
-        </asp:DataList>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:data %>" SelectCommand="SELECT * FROM [san_pham]"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [name], [price], [img], [status], [sale_price] FROM [product]"></asp:SqlDataSource>
         </div>
+        <asp:ListView ID="ListView1" runat="server" DataKeyNames="ma" DataSourceID="SqlDataSource4" EnableModelValidation="True" InsertItemPosition="LastItem">
+            <AlternatingItemTemplate>
+                <li style="background-color: #FFF8DC;">Mã Khách Hàng(*):
+                    <asp:Label ID="maLabel" runat="server" Text='<%# Eval("ma") %>' />
+                    <br />
+                    Tên Khách hàng:
+                    <asp:Label ID="ten_day_duLabel" runat="server" Text='<%# Eval("ten_day_du") %>' />
+                    <br />
+                    Email:
+                    <asp:Label ID="emailLabel" runat="server" Text='<%# Eval("email") %>' />
+                    <br />
+                    SDT:
+                    <asp:Label ID="sdtLabel" runat="server" Text='<%# Eval("sdt") %>' />
+                    <br />
+                    <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
+                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
+                </li>
+            </AlternatingItemTemplate>
+            <EditItemTemplate>
+                <li style="background-color: #008A8C;color: #FFFFFF;">Mã Khách hàng(*):
+                    <asp:Label ID="maLabel1" runat="server" Text='<%# Eval("ma") %>' />
+                    <br />
+                    Tên Khách hàng:
+                    <asp:TextBox ID="ten_day_duTextBox" runat="server" Text='<%# Bind("ten_day_du") %>' />
+                    <br />
+                    Email:
+                    <asp:TextBox ID="emailTextBox" runat="server" Text='<%# Bind("email") %>' />
+                    <br />
+                    SDT:
+                    <asp:TextBox ID="sdtTextBox" runat="server" Text='<%# Bind("sdt") %>' />
+                    <br />
+                    <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                    <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                </li>
+            </EditItemTemplate>
+            <EmptyDataTemplate>
+                No data was returned.
+            </EmptyDataTemplate>
+            <InsertItemTemplate>
+                <li style="">Mã Khách hàng:
+                    <asp:TextBox ID="maTextBox" runat="server" Text='<%# Bind("ma") %>' />
+                    <br />Tên Khách Hàng:
+                    <asp:TextBox ID="ten_day_duTextBox" runat="server" Text='<%# Bind("ten_day_du") %>' />
+                    <br />Email:
+                    <asp:TextBox ID="emailTextBox" runat="server" Text='<%# Bind("email") %>' />
+                    <br />SDT:
+                    <asp:TextBox ID="sdtTextBox" runat="server" Text='<%# Bind("sdt") %>' />
+                    <br />
+                    <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
+                    <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
+                </li>
+            </InsertItemTemplate>
+            <ItemSeparatorTemplate>
+<br />
+            </ItemSeparatorTemplate>
+            <ItemTemplate>
+                <li style="background-color: #DCDCDC;color: #000000;">Mã Khách hàng(*):
+                    <asp:Label ID="maLabel" runat="server" Text='<%# Eval("ma") %>' />
+                    <br />
+                    Tên Khách hàng:
+                    <asp:Label ID="ten_day_duLabel" runat="server" Text='<%# Eval("ten_day_du") %>' />
+                    <br />
+                    Email:
+                    <asp:Label ID="emailLabel" runat="server" Text='<%# Eval("email") %>' />
+                    <br />
+                    SDT:
+                    <asp:Label ID="sdtLabel" runat="server" Text='<%# Eval("sdt") %>' />
+                    <br />
+                    <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
+                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
+                </li>
+            </ItemTemplate>
+            <LayoutTemplate>
+                <ul id="itemPlaceholderContainer" runat="server" style="font-family: Verdana, Arial, Helvetica, sans-serif;">
+                    <li runat="server" id="itemPlaceholder" />
+                </ul>
+                <div style="text-align: center;background-color: #CCCCCC;font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;">
+                    <asp:DataPager ID="DataPager1" runat="server">
+                        <Fields>
+                            <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
+                        </Fields>
+                    </asp:DataPager>
+                </div>
+            </LayoutTemplate>
+            <SelectedItemTemplate>
+                <li style="background-color: #008A8C;font-weight: bold;color: #FFFFFF;">Mã Khách Hàng(*):
+                    <asp:Label ID="maLabel" runat="server" Text='<%# Eval("ma") %>' />
+                    <br />
+                    Tên Khách hàng:
+                    <asp:Label ID="ten_day_duLabel" runat="server" Text='<%# Eval("ten_day_du") %>' />
+                    <br />
+                    Email:
+                    <asp:Label ID="emailLabel" runat="server" Text='<%# Eval("email") %>' />
+                    <br />
+                    SDT:
+                    <asp:Label ID="sdtLabel" runat="server" Text='<%# Eval("sdt") %>' />
+                    <br />
+                    <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
+                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
+                </li>
+            </SelectedItemTemplate>
+        </asp:ListView>
+        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:data %>" DeleteCommand="DELETE FROM [khach_hang] WHERE [ma] = @ma" InsertCommand="INSERT INTO [khach_hang] ([ma], [ten_day_du], [email], [sdt]) VALUES (@ma, @ten_day_du, @email, @sdt)" SelectCommand="SELECT * FROM [khach_hang]" UpdateCommand="UPDATE [khach_hang] SET [ten_day_du] = @ten_day_du, [email] = @email, [sdt] = @sdt WHERE [ma] = @ma">
+            <DeleteParameters>
+                <asp:Parameter Name="ma" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="ma" Type="Int32" />
+                <asp:Parameter Name="ten_day_du" Type="String" />
+                <asp:Parameter Name="email" Type="String" />
+                <asp:Parameter Name="sdt" Type="Int32" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="ten_day_du" Type="String" />
+                <asp:Parameter Name="email" Type="String" />
+                <asp:Parameter Name="sdt" Type="Int32" />
+                <asp:Parameter Name="ma" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:data %>" DeleteCommand="DELETE FROM [hoa_don] WHERE [ma] = @ma" InsertCommand="INSERT INTO [hoa_don] ([ma], [so_hoa_don], [ma_khach_hang], [Tong_tien]) VALUES (@ma, @so_hoa_don, @ma_khach_hang, @Tong_tien)" SelectCommand="SELECT * FROM [hoa_don]" UpdateCommand="UPDATE [hoa_don] SET [so_hoa_don] = @so_hoa_don, [ma_khach_hang] = @ma_khach_hang, [Tong_tien] = @Tong_tien WHERE [ma] = @ma">
+            <DeleteParameters>
+                <asp:Parameter Name="ma" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="ma" Type="Int32" />
+                <asp:Parameter Name="so_hoa_don" Type="String" />
+                <asp:Parameter Name="ma_khach_hang" Type="Int32" />
+                <asp:Parameter Name="Tong_tien" Type="Decimal" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="so_hoa_don" Type="String" />
+                <asp:Parameter Name="ma_khach_hang" Type="Int32" />
+                <asp:Parameter Name="Tong_tien" Type="Decimal" />
+                <asp:Parameter Name="ma" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:data %>" DeleteCommand="DELETE FROM [san_pham] WHERE [ma] = @ma" InsertCommand="INSERT INTO [san_pham] ([ma], [ma_loai_san_pham], [ma_so], [ten_san_pham], [gia], [mo_ta], [anh], [don_vi_tinh]) VALUES (@ma, @ma_loai_san_pham, @ma_so, @ten_san_pham, @gia, @mo_ta, @anh, @don_vi_tinh)" SelectCommand="SELECT * FROM [san_pham]" UpdateCommand="UPDATE [san_pham] SET [ma_loai_san_pham] = @ma_loai_san_pham, [ma_so] = @ma_so, [ten_san_pham] = @ten_san_pham, [gia] = @gia, [mo_ta] = @mo_ta, [anh] = @anh, [don_vi_tinh] = @don_vi_tinh WHERE [ma] = @ma">
+            <DeleteParameters>
+                <asp:Parameter Name="ma" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="ma" Type="Int32" />
+                <asp:Parameter Name="ma_loai_san_pham" Type="Int32" />
+                <asp:Parameter Name="ma_so" Type="String" />
+                <asp:Parameter Name="ten_san_pham" Type="String" />
+                <asp:Parameter Name="gia" Type="Decimal" />
+                <asp:Parameter Name="mo_ta" Type="String" />
+                <asp:Parameter Name="anh" Type="String" />
+                <asp:Parameter Name="don_vi_tinh" Type="String" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="ma_loai_san_pham" Type="Int32" />
+                <asp:Parameter Name="ma_so" Type="String" />
+                <asp:Parameter Name="ten_san_pham" Type="String" />
+                <asp:Parameter Name="gia" Type="Decimal" />
+                <asp:Parameter Name="mo_ta" Type="String" />
+                <asp:Parameter Name="anh" Type="String" />
+                <asp:Parameter Name="don_vi_tinh" Type="String" />
+                <asp:Parameter Name="ma" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [product]" DeleteCommand="DELETE FROM [product] WHERE [id] = @id" InsertCommand="INSERT INTO [product] ([id], [category_id], [sku], [name], [price], [description], [img], [weight], [unit], [status], [quantity], [sale_price]) VALUES (@id, @category_id, @sku, @name, @price, @description, @img, @weight, @unit, @status, @quantity, @sale_price)" UpdateCommand="UPDATE [product] SET [category_id] = @category_id, [sku] = @sku, [name] = @name, [price] = @price, [description] = @description, [img] = @img, [weight] = @weight, [unit] = @unit, [status] = @status, [quantity] = @quantity, [sale_price] = @sale_price WHERE [id] = @id">
+            <DeleteParameters>
+                <asp:Parameter Name="id" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="id" Type="Int32" />
+                <asp:Parameter Name="category_id" Type="Int32" />
+                <asp:Parameter Name="sku" Type="String" />
+                <asp:Parameter Name="name" Type="String" />
+                <asp:Parameter Name="price" Type="Decimal" />
+                <asp:Parameter Name="description" Type="String" />
+                <asp:Parameter Name="img" Type="Object" />
+                <asp:Parameter Name="weight" Type="Int32" />
+                <asp:Parameter Name="unit" Type="String" />
+                <asp:Parameter Name="status" Type="Int32" />
+                <asp:Parameter Name="quantity" Type="Int32" />
+                <asp:Parameter Name="sale_price" Type="Int32" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="category_id" Type="Int32" />
+                <asp:Parameter Name="sku" Type="String" />
+                <asp:Parameter Name="name" Type="String" />
+                <asp:Parameter Name="price" Type="Decimal" />
+                <asp:Parameter Name="description" Type="String" />
+                <asp:Parameter Name="img" Type="Object" />
+                <asp:Parameter Name="weight" Type="Int32" />
+                <asp:Parameter Name="unit" Type="String" />
+                <asp:Parameter Name="status" Type="Int32" />
+                <asp:Parameter Name="quantity" Type="Int32" />
+                <asp:Parameter Name="sale_price" Type="Int32" />
+                <asp:Parameter Name="id" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
     </div>
     <div id="testimonial-bar">
         <div class="container">

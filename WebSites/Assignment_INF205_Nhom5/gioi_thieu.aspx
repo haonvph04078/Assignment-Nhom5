@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>F5 Shop Group | Trang Chủ</title>  
@@ -22,15 +22,7 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
     <style type="text/css">
-        .auto-style1 {
-            font-size: 16px;
-            font-family:Cambria;
-           
-        }
-        .auto-style2 {
-            width: 100%;
-        }
-       
+               
         td,input {
             font-family:Cambria;
             font-size:14px;
@@ -52,7 +44,7 @@
                     </span>
                 </button>
                 <a href="Default.aspx" class="navbar-brand">
-                    <asp:Image runat="server" ImageUrl="images/logof5.png" with="70px" height="70px"/>
+                    <asp:Image ID="Image1" runat="server" ImageUrl="images/logof5.png" with="70px" height="70px"/>
                 </a>
             </div>
             <div id="myNav" class="collapse navbar-collapse">
@@ -211,31 +203,61 @@
       </div>
      </section>
     <div class="container">
-        
-        <asp:DataList ID="DataList1" runat="server" RepeatColumns="3" DataSourceID="SqlDataSource2" DataKeyField="ma">
-
-            <ItemTemplate>
-                <asp:Image ID="Image1" runat="server" Height="365px" ImageUrl='<%# Bind("anh") %>' Width="365px" />
-                <br />
-               
-                
-                
-                <asp:Label ID="ten_san_phamLabel" runat="server" Text='<%# Eval("ten_san_pham") %>' />
-                
-                <br />
-                Giá:
-                <asp:Label ID="giaLabel" runat="server" Text='<%# Eval("gia") %>' />
-                <br />
-                Mô tả:
-                <asp:Label ID="mo_taLabel" runat="server" Text='<%# Eval("mo_ta") %>' />
-              
-                <br />
-                
-                <asp:Button ID="Button1" runat="server" Text="Detail" Width="82px" CommandName="Detail" />
-                <asp:Button ID="Button2" runat="server" Text="Add To Cart" Width="82px" CommandName="Add"/>
-                <br />
-            </ItemTemplate>
-        </asp:DataList>
+        <div class="info-group">
+            <h3>Thành viên F5 Shop Group</h3>
+            <p>
+                Nguyễn Văn Hảo<br />
+                Phạm Ngọc Linh<br />
+                Trần Hạnh Kiên<br />
+                Nguyễn Văn Hóa<br />
+                Vũ Đức Long<br />
+            </p>
+        </div>
+        <div class="contact padding100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div id="main-contact-form" class="contact-form">
+                        <!-- form -->
+                        <form  method="post">
+                        <div class="form-group">
+                            <label class="sr-only" for="contact-name">
+                                Tên</label>
+                            <input type="text" name="name" placeholder="Tên..." class="contact-name form-control"
+                                id="contact-name">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="contact-email">
+                                Email</label>
+                            <input type="text" name="email" placeholder="Email..." class="contact-email form-control"
+                                id="contact-email">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="contact-subject">
+                                Chủ đề</label>
+                            <input type="text" name="subject" placeholder="Chủ đề..." class="contact-subject form-control"
+                                id="contact-subject">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="contact-message">
+                                Nội dung</label>
+                            <textarea name="message" placeholder="Nội dung..." class="contact-message form-control"
+                                id="contact-message" style="height: 150px"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">
+                            Gửi Tin</button><br />
+                        </form>
+                        <!-- ./form -->
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+        </div>
+    </div>
+        <div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d782.8610563513392!2d105.76521957409635!3d21.03525653067118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e2!4m3!3m2!1d21.0353115!2d105.76517779999999!4m3!3m2!1d21.0353107!2d105.7651599!5e0!3m2!1svi!2s!4v1480953631616" width="100%" max-width="1100" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:data %>" SelectCommand="SELECT * FROM [san_pham]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [name], [price], [img], [status], [sale_price] FROM [product]"></asp:SqlDataSource>
         </div>
