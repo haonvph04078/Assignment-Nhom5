@@ -203,33 +203,31 @@
      </section>
     <div class="container">
         </div>
-        <asp:ListView ID="ListView1" runat="server" DataKeyNames="ma" DataSourceID="SqlDataSource2" EnableModelValidation="True" InsertItemPosition="LastItem">
+        <asp:ListView ID="ListView1" runat="server" DataKeyNames="ma" DataSourceID="SqlDataSource2" InsertItemPosition="LastItem">
             <AlternatingItemTemplate>
                 <li style="background-color: #FFF8DC;">
-                    <asp:Image ID="Image1" runat="server" Height="165px" ImageUrl='<%# Bind("anh") %>' Width="165px" />
-                    <br />
-                    Mã SP(*):
+                    ma:
                     <asp:Label ID="maLabel" runat="server" Text='<%# Eval("ma") %>' />
                     <br />
-                    Mã Loại SP:
+                    ma_loai_san_pham:
                     <asp:Label ID="ma_loai_san_phamLabel" runat="server" Text='<%# Eval("ma_loai_san_pham") %>' />
                     <br />
-                    Mã Số:
+                    ma_so:
                     <asp:Label ID="ma_soLabel" runat="server" Text='<%# Eval("ma_so") %>' />
                     <br />
-                    Tên Của Sản Phẩm:
+                    ten_san_pham:
                     <asp:Label ID="ten_san_phamLabel" runat="server" Text='<%# Eval("ten_san_pham") %>' />
                     <br />
-                    Giá:
+                    gia:
                     <asp:Label ID="giaLabel" runat="server" Text='<%# Eval("gia") %>' />
                     <br />
-                    Thêm Mô Tả:
+                    mo_ta:
                     <asp:Label ID="mo_taLabel" runat="server" Text='<%# Eval("mo_ta") %>' />
                     <br />
-                    Link Ảnh:
+                    anh:
                     <asp:Label ID="anhLabel" runat="server" Text='<%# Eval("anh") %>' />
                     <br />
-                    Đơn vị đếm:
+                    don_vi_tinh:
                     <asp:Label ID="don_vi_tinhLabel" runat="server" Text='<%# Eval("don_vi_tinh") %>' />
                     <br />
                     <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
@@ -237,28 +235,28 @@
                 </li>
             </AlternatingItemTemplate>
             <EditItemTemplate>
-                <li style="background-color: #008A8C;color: #FFFFFF;">Mã SP(*):
+                <li style="background-color: #008A8C;color: #FFFFFF;">ma:
                     <asp:Label ID="maLabel1" runat="server" Text='<%# Eval("ma") %>' />
                     <br />
-                    Mã Loại SP:
+                    ma_loai_san_pham:
                     <asp:TextBox ID="ma_loai_san_phamTextBox" runat="server" Text='<%# Bind("ma_loai_san_pham") %>' />
                     <br />
-                    Mã Số:
+                    ma_so:
                     <asp:TextBox ID="ma_soTextBox" runat="server" Text='<%# Bind("ma_so") %>' />
                     <br />
-                    Tên Sản Phẩm:
+                    ten_san_pham:
                     <asp:TextBox ID="ten_san_phamTextBox" runat="server" Text='<%# Bind("ten_san_pham") %>' />
                     <br />
-                    Giá:
+                    gia:
                     <asp:TextBox ID="giaTextBox" runat="server" Text='<%# Bind("gia") %>' />
                     <br />
-                    Thêm Mô Tả:
+                    mo_ta:
                     <asp:TextBox ID="mo_taTextBox" runat="server" Text='<%# Bind("mo_ta") %>' />
                     <br />
-                    Lnik Ảnh của SP:
+                    anh:
                     <asp:TextBox ID="anhTextBox" runat="server" Text='<%# Bind("anh") %>' />
                     <br />
-                    Đơn vị đếm:
+                    don_vi_tinh:
                     <asp:TextBox ID="don_vi_tinhTextBox" runat="server" Text='<%# Bind("don_vi_tinh") %>' />
                     <br />
                     <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
@@ -269,21 +267,21 @@
                 No data was returned.
             </EmptyDataTemplate>
             <InsertItemTemplate>
-                <li style="">Mã Sản Phẩm(*):
+                <li style="">ma:
                     <asp:TextBox ID="maTextBox" runat="server" Text='<%# Bind("ma") %>' />
-                    <br />Mã Loại SP:
+                    <br />ma_loai_san_pham:
                     <asp:TextBox ID="ma_loai_san_phamTextBox" runat="server" Text='<%# Bind("ma_loai_san_pham") %>' />
-                    <br />Mã Số:
+                    <br />ma_so:
                     <asp:TextBox ID="ma_soTextBox" runat="server" Text='<%# Bind("ma_so") %>' />
-                    <br />Tên Của Sản Phẩm:
+                    <br />ten_san_pham:
                     <asp:TextBox ID="ten_san_phamTextBox" runat="server" Text='<%# Bind("ten_san_pham") %>' />
-                    <br />Giá:
+                    <br />gia:
                     <asp:TextBox ID="giaTextBox" runat="server" Text='<%# Bind("gia") %>' />
-                    <br />Thêm Mô tả:
+                    <br />mo_ta:
                     <asp:TextBox ID="mo_taTextBox" runat="server" Text='<%# Bind("mo_ta") %>' />
-                    <br />Link Ảnh Sp:
+                    <br />anh:
                     <asp:TextBox ID="anhTextBox" runat="server" Text='<%# Bind("anh") %>' />
-                    <br />Đơn vị đếm:
+                    <br />don_vi_tinh:
                     <asp:TextBox ID="don_vi_tinhTextBox" runat="server" Text='<%# Bind("don_vi_tinh") %>' />
                     <br />
                     <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
@@ -295,30 +293,28 @@
             </ItemSeparatorTemplate>
             <ItemTemplate>
                 <li style="background-color: #DCDCDC;color: #000000;">
-                    <asp:Image ID="Image1" runat="server" Height="165px" ImageUrl='<%# Bind("anh") %>' Width="165px" />
-                    <br />
-                    Mã Sản Phẩm:
+                    ma:
                     <asp:Label ID="maLabel" runat="server" Text='<%# Eval("ma") %>' />
                     <br />
-                    Mã loại SP:
+                    ma_loai_san_pham:
                     <asp:Label ID="ma_loai_san_phamLabel" runat="server" Text='<%# Eval("ma_loai_san_pham") %>' />
                     <br />
-                    Mã Số:
+                    ma_so:
                     <asp:Label ID="ma_soLabel" runat="server" Text='<%# Eval("ma_so") %>' />
                     <br />
-                    Tên Sản Phẩm:
+                    ten_san_pham:
                     <asp:Label ID="ten_san_phamLabel" runat="server" Text='<%# Eval("ten_san_pham") %>' />
                     <br />
-                    Giá:
+                    gia:
                     <asp:Label ID="giaLabel" runat="server" Text='<%# Eval("gia") %>' />
                     <br />
-                    Thêm Mô Tả:
+                    mo_ta:
                     <asp:Label ID="mo_taLabel" runat="server" Text='<%# Eval("mo_ta") %>' />
                     <br />
-                    Link Ảnh SP:
+                    anh:
                     <asp:Label ID="anhLabel" runat="server" Text='<%# Eval("anh") %>' />
                     <br />
-                    Đơn vị đếm:
+                    don_vi_tinh:
                     <asp:Label ID="don_vi_tinhLabel" runat="server" Text='<%# Eval("don_vi_tinh") %>' />
                     <br />
                     <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
@@ -338,28 +334,28 @@
                 </div>
             </LayoutTemplate>
             <SelectedItemTemplate>
-                <li style="background-color: #008A8C;font-weight: bold;color: #FFFFFF;">mã Của SP (*):
+                <li style="background-color: #008A8C;font-weight: bold;color: #FFFFFF;">ma:
                     <asp:Label ID="maLabel" runat="server" Text='<%# Eval("ma") %>' />
                     <br />
-                    Mã Loại SP:
+                    ma_loai_san_pham:
                     <asp:Label ID="ma_loai_san_phamLabel" runat="server" Text='<%# Eval("ma_loai_san_pham") %>' />
                     <br />
-                    Mã Số:
+                    ma_so:
                     <asp:Label ID="ma_soLabel" runat="server" Text='<%# Eval("ma_so") %>' />
                     <br />
-                    Tên Sản Phẩm:
+                    ten_san_pham:
                     <asp:Label ID="ten_san_phamLabel" runat="server" Text='<%# Eval("ten_san_pham") %>' />
                     <br />
-                    Giá:
+                    gia:
                     <asp:Label ID="giaLabel" runat="server" Text='<%# Eval("gia") %>' />
                     <br />
-                    Tả:
+                    mo_ta:
                     <asp:Label ID="mo_taLabel" runat="server" Text='<%# Eval("mo_ta") %>' />
                     <br />
-                    Link Ảnh SP:
+                    anh:
                     <asp:Label ID="anhLabel" runat="server" Text='<%# Eval("anh") %>' />
                     <br />
-                    Đơn vị đếm:
+                    don_vi_tinh:
                     <asp:Label ID="don_vi_tinhLabel" runat="server" Text='<%# Eval("don_vi_tinh") %>' />
                     <br />
                     <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
@@ -367,7 +363,7 @@
                 </li>
             </SelectedItemTemplate>
         </asp:ListView>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:data %>" DeleteCommand="DELETE FROM [san_pham] WHERE [ma] = @ma" InsertCommand="INSERT INTO [san_pham] ([ma], [ma_loai_san_pham], [ma_so], [ten_san_pham], [gia], [mo_ta], [anh], [don_vi_tinh]) VALUES (@ma, @ma_loai_san_pham, @ma_so, @ten_san_pham, @gia, @mo_ta, @anh, @don_vi_tinh)" SelectCommand="SELECT * FROM [san_pham]" UpdateCommand="UPDATE [san_pham] SET [ma_loai_san_pham] = @ma_loai_san_pham, [ma_so] = @ma_so, [ten_san_pham] = @ten_san_pham, [gia] = @gia, [mo_ta] = @mo_ta, [anh] = @anh, [don_vi_tinh] = @don_vi_tinh WHERE [ma] = @ma">
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Assignment_INF205_nhom5ConnectionString %>" DeleteCommand="DELETE FROM [san_pham] WHERE [ma] = @ma" InsertCommand="INSERT INTO [san_pham] ([ma], [ma_loai_san_pham], [ma_so], [ten_san_pham], [gia], [mo_ta], [anh], [don_vi_tinh]) VALUES (@ma, @ma_loai_san_pham, @ma_so, @ten_san_pham, @gia, @mo_ta, @anh, @don_vi_tinh)" SelectCommand="SELECT * FROM [san_pham]" UpdateCommand="UPDATE [san_pham] SET [ma_loai_san_pham] = @ma_loai_san_pham, [ma_so] = @ma_so, [ten_san_pham] = @ten_san_pham, [gia] = @gia, [mo_ta] = @mo_ta, [anh] = @anh, [don_vi_tinh] = @don_vi_tinh WHERE [ma] = @ma">
             <DeleteParameters>
                 <asp:Parameter Name="ma" Type="Int32" />
             </DeleteParameters>

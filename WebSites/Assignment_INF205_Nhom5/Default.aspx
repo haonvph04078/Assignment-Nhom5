@@ -236,7 +236,7 @@
                 <br />
             </ItemTemplate>
         </asp:DataList>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:data %>" SelectCommand="SELECT * FROM [san_pham]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Assignment_INF205_nhom5ConnectionString %>" SelectCommand="SELECT * FROM [san_pham]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [name], [price], [img], [status], [sale_price] FROM [product]"></asp:SqlDataSource>
         </div>
     </div>
